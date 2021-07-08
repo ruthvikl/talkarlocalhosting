@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175792147-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-175792147-2');
+    </script>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8" />
+    <title>TalkAR</title>
+    <meta name="description" content="TalkAR" />
+    <script async src="https://apps.8thwall.com/xrweb?appKey=ihpYlP60fikJhuGP8DSzS2dQQqa9bEaoylybJsx0lCdr8ZCVykiwKQfh3bH44xiSUbNcKf"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
+    <script src="./xrextras/dist/xrextras.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="/talkar-extras.js"></script>
+    <script src="./talkar.js"></script>
+  </head>
+  <body>
+    <div id="interface-container1"></div>
+    <div id="interface-container">
+      <div class="container-fluid" style="height: 100%;">
+        <div class="row justify-content-center align-items-center" style="height: 20%;">
+          <div class="col-10">
+            <h3 id="aim" class="text-center gotham-font"> AIM CAMERA TOWARD ANY FLAT SURFACE</h3>
+          </div>
+        </div>
+        <div class="row justify-content-center" style="height: 20%;"></div>
+
+        <div class="row justify-content-center" style="height: 30%;">
+          <div class="col-10 justify-content-center" style="position: relative;">
+            <img id="tap-circle" src="./assets/tap-circle.png" />
+            <img id="tap-hand" src="./assets/tap-hand.png" />
+          </div>
+        </div>
+
+        <div class="row justify-content-center" style="height: 10%;"></div>
+
+        <div class="row justify-content-center align-items-center" style="height: 20%;">
+          <div class="col-10">
+            <h3 id="tap" class="text-center gotham-font">TAP TO VIEW AR HOLOGRAM</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="interface-container-two">
+      <div class="container-fluid" style="height: 100%;">
+        <div class="row justify-content-center align-items-center" style="height: 80%;"></div>
+        <div class="row justify-content-center align-items-center" style="height: 20%;">
+          <a id="talkar-button" class="btn btn-primary btn-lg" href="http://talkar.tech" role="button">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
