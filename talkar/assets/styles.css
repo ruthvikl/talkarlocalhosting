@@ -23,6 +23,10 @@
   }
 }
 
+body{
+overflow:hidden !important;
+}
+
 #interface-container {
   visibility: hidden;
   position: absolute;

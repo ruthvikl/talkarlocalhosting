@@ -248,11 +248,10 @@ const PRODUCTION_HOSTNAME = 'talkar.app';
 
 const DEVELOPMENT_URL = 'http://localhost:1337';
 // const DEVELOPMENT_URL = 'https://180091fd02db.ngrok.io';
-const PRODUCTION_URL = 'https://29544d2367ee.ngrok.io';
-
+const PRODUCTION_URL = 'https://admin.talkar.app';
 const DEVELOPMENT_API_URL = 'http://localhost:1337/experiences';
 // const DEVELOPMENT_API_URL = 'https://180091fd02db.ngrok.io/experiences';
-const PRODUCTION_API_URL = 'https://29544d2367ee.ngrok.io/experiences';
+const PRODUCTION_API_URL = 'https://admin.talkar.app/experiences';
 
 const APP_TYPE_AFRAME = 'a-frame';
 const APP_TYPE_8THWALL = '8th-wall';
@@ -339,10 +338,14 @@ let data;
 let sen;
 let dsen;
 const NEW_API = "https://www.j2mgroup.com/1.0/contacts/single"
+ 
+
 
 initializeApp();
 
 function initializeApp() {
+      
+
   setUrls();
   setAppType();
   getExperienceData();
@@ -474,7 +477,7 @@ function initialzeAFrameScene() {
 
 function initialize8thWallScene() {
   const xrScene = `
-  <a-scene id="talkar-scene" xrweb xrextras-tap-recenter xrextras-almost-there xrextras-loading xrextras-runtime-error>
+  <a-scene id="talkar-scene" xrweb xrextras-almost-there xrextras-loading xrextras-runtime-error>
     <a-assets>
     <video
         id="port"
@@ -507,6 +510,8 @@ function initialize8thWallScene() {
 
 const talkarComponent = {
   init: function () {
+	
+
     const data = res.data;
     console.log(data);
 
@@ -550,7 +555,7 @@ const talkarComponent = {
     //Ground
     groundEl.addEventListener('click', function (e) {
       let touchPoint = event.detail.intersection.point;
-      let addv = new THREE.Vector3(1, 1.3, -5);
+      let addv = new THREE.Vector3(0,1.3, -5);
       let position = touchPoint.add(addv);
       sheet.setAttribute('id', 'Video');
       sheet.setAttribute('geometry', 'primitive: plane; height: 2 ; width: 2;')
@@ -560,7 +565,7 @@ const talkarComponent = {
       if (!didUserTap) {
         didUserTap = true;
         hideInterface();
-        sheet.setAttribute('visible', 'true');
+        //sheet.setAttribute('visible', 'true');
         
         // sheet.setAttribute('position', '0 0.5 -9');
         // sheet.setAttribute('position', touchPoint);
@@ -574,20 +579,24 @@ const talkarComponent = {
         rootEl.setAttribute('position', touchPoint);
         loadingEl.setAttribute('position', touchPoint);
            
-        sceneEl.appendChild(sheet)
+        //sceneEl.appendChild(sheet)
         v.loop = false
         v.muted = false
-        v.play()
+        //v.play()
         activateMedia(assets);
+	//sceneEl.appendChild(sheet)
 
         if (didAssetsLoad) {
+	  
           if (!didExperienceStart) {
             startExperience();
+		  
           }
         } else {
           showLoadingElement();
         }
       }
+	
     });
 
     //Play Pause Media
@@ -617,6 +626,7 @@ const talkarComponent = {
     }
 
     function showInterface() {
+
       const userInterface = document.getElementById('interface-container');
       userInterface.style.visibility = 'visible';
     }
@@ -670,15 +680,17 @@ const talkarComponent = {
         }, 7000);
       }
     }
+	
 
     //Root Element
     initializeRootElement(rootElementData);
 
-    function initializeRootElement(elementData) {
+function initializeRootElement(elementData) {
       rootEl.object3D.visible = false;
       rootEl.setAttribute('id', elementData.uniqueName);
-      sceneEl.appendChild(rootEl);
+     sceneEl.appendChild(rootEl);
       addElement(elementData.uniqueName, rootEl, elementData);
+	   
     }
 
     //Loading
@@ -934,6 +946,9 @@ const talkarComponent = {
           loadingAmount = 100;
           loadingTextEl.setAttribute('value', `${loadingAmount.toFixed()}%`);
           initializeElements();
+ 	sheet.setAttribute('visible', 'true');
+          sceneEl.appendChild(sheet)
+	  v.play()
         } else {
           loadingAmount = (numberOfLoadedAssets / assetsData.length) * 100;
           loadingTextEl.setAttribute('value', `${loadingAmount.toFixed()}%`);
@@ -1325,6 +1340,7 @@ const talkarComponent = {
           let model = modelAsset.scene || modelAsset.scenes[0];
           model.animations = modelAsset.animations;
           loadAsset(assetData.uniqueName, model);
+	
         }
       });
     }
@@ -2472,13 +2488,17 @@ const talkarComponent = {
         to: ${values.toX} ${values.toY} ${values.toZ}; dur: ${
           values.duration * 1000
         };
-        delay: ${values.delay * 1000}; easing: ${
+ 	delay: ${values.delay * 1000}; easing: ${
           values.easing
         }; startEvents: ${TIME_END_ANIMATION_EVENT}
         `
-      );
-
+	);
       triggerAudioWithAnimation(element, a, animationName);
     }
   },
 };
+//Components
+     // triggerAudioWithAnimation(element, a, animationName);
+    //}
+  //},
+//};
